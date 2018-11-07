@@ -3,6 +3,8 @@ $secondary-color: yellow;
 $show-home-image:true;
 $home-image-url:url(../img/background.jpg);
 $background-opacity:0.9;
+$profile-picture:url('../img/portrait.jpg');
+$profile-picture-sm:url('../img/portrait_small.jpg');
 
 @mixin easeOut {
     transition: all 200ms ease-out;
@@ -24,5 +26,35 @@ $background-opacity:0.9;
                 background: rgba($primary-color,$background-opacity);
             }
         }
+    }
+}
+
+// Media Query Mixins
+// ensure this is mobile first
+
+@mixin mediaSm {
+    @media screen and (max-width:500px) {
+        @content;
+    }
+}
+@mixin mediaMd {
+    @media screen and (max-width:768px) {
+        @content;
+    }
+}
+// why do you need a range?
+// cant just do (max-width:1170px)?
+// try it out
+@mixin mediaLg {
+    // @media screen and (max-width:1170px) {
+    @media screen and (min-width:769px) and (max-width:1170px) {
+        @content;
+    }
+}
+
+//do min-width here because from that point to any larger width, apply *these styles
+@mixin mediaXl {
+    @media screen and (min-width:1171px) {
+        @content;
     }
 }
